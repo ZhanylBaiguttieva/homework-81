@@ -5,6 +5,9 @@ const rootPath = __dirname;
 const config = {
     rootPath,
     publicPath: path.join(rootPath, 'public'),
+    mongoose: {
+        db: 'mongodb://localhost/link',
+    }
 };
 
 export default config;
