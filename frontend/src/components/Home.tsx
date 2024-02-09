@@ -8,7 +8,7 @@ const Home:React.FC = () => {
   const [state, setState] = useState({
     originalUrl: ''
   });
-  const [shortState, setShortState] = useState<string>('');
+  const [shortState, setShortState] = useState('');
   const dispatch = useAppDispatch();
   const shortUrl = useAppSelector(selectLink);
 
