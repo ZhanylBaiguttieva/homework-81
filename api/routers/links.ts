@@ -40,10 +40,6 @@ linksRouter.post('/links', async (req, res, next) => {
 
     res.send(link);
   } catch (e) {
-    if (e instanceof mongoose.Error.ValidationError) {
-      return res.status(422).send(e);
-    }
-
     next(e);
   }
 });
