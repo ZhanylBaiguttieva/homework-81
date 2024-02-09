@@ -1,18 +1,14 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import axiosApi from '../axiosAPi.ts';
-import {Link} from '../types';
+import {Link, Url} from '../types';
 
-export const createLink = createAsyncThunk(
+export const createLink = createAsyncThunk<Link,Url>(
   'links/create',
-  async (urlInfo: Link) => {
-    const urlResponse = await axiosApi.post< Link| null>('/links', urlInfo);
+  async (urlInfo) => {
+    const urlResponse = await axiosApi.post('/links', urlInfo);
 
     const response = urlResponse.data;
     console.log(urlResponse.data);
-
-    if(!response) {
-      return '';
-    }
 
     const newUrlInfo: Link = {
       _id: response._id,
@@ -22,6 +18,5 @@ export const createLink = createAsyncThunk(
 
     console.log(newUrlInfo);
     return newUrlInfo;
-
 });
 

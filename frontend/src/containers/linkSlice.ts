@@ -1,6 +1,6 @@
 import {Link} from '../types';
 import {RootState} from '../app/store.ts';
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {createLink} from './linkThunks.ts';
 
 interface LinkState {
@@ -24,8 +24,9 @@ export const linkSlice = createSlice({
       state.createLoading = true;
     });
 
-    builder.addCase(createLink.fulfilled, (state) => {
+    builder.addCase(createLink.fulfilled, (state, {payload: item}:PayloadAction<Link> ) => {
       state.createLoading = false;
+      state.item = item;
     });
 
     builder.addCase(createLink.rejected, (state) => {
